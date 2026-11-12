@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frames dinámicos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>🎞️ Frames dinámicos</h1>
+
+<section>
+<h2>1 · Video</h2>
+<label class="btn s" style="display:block;color:var(--tx)">Elegir video<input type="file" id="vf" accept="video/*"></label>
+<div class="info" id="vn">Ningún video cargado</div>
+<label>FPS en escenas quietas <b id="l1">2</b></label><input type="range" id="minF" min="1" max="6" step="0.5" value="2">
+<label>FPS en escenas con mucho movimiento <b id="l2">6</b></label><input type="range" id="maxF" min="2" max="12" step="1" value="6">
+<label>Sensibilidad: movimiento que cuenta como alto <b id="l3">6</b></label><input type="range" id="sens" min="1" max="40" step="1" value="6">
+<label>Tamaño máximo del frame</label>
+<select id="size"><option value="256">256 px (liviano)</option><option value="512">512 px</option><option value="768">768 px</option><option value="1080" selected>1080 px (alta calidad)</option><option value="0">Original (sin reducir)</option></select>
+<div class="info">Más tamaño = más memoria. Si el celular se queda sin memoria, baja el tamaño o el FPS máximo. Un spritesheet muy grande (más de unos 16 millones de píxeles) puede fallar en el celular.</div>
+<div class="row"><button id="an" disabled>Analizar video</button><button class="s" id="re" disabled>Recalcular selección</button></div>
+<div class="bar" id="bar"><i id="bi"></i></div>
+<div class="info">Cambiar FPS mínimo o sensibilidad y tocar Recalcular reinicia la selección automática. Cambiar FPS máximo o tamaño requiere Analizar de nuevo.</div>
+</section>
+
+<section>
+<h2>2 · Previsualizar</h2>
+<div class="pv"><canvas id="pv" width="16" height="9"></canvas></div>
+<div class="info" id="inf">Sin frames</div>
+<div class="row"><button id="pl" disabled>▶ Reproducir</button></div>
+</section>
+
+<section>
+<h2>3 · Editar frames</h2>
+<div class="info">Toca un frame para seleccionarlo. Los apagados se ven tenues.</div>
+<div id="grid"></div>
+<div id="panel">
+<div class="info" id="pi"></div>
+<div class="row"><button class="s" id="tg">Quitar / dejar</button></div>
+<label>Duración en ms (vacío = automática)</label>
+<div class="row"><input type="number" id="du" min="40" step="10" style="flex:2 1 100px"><button id="ap" style="flex:1 1 80px">Aplicar</button></div>
+</div>
+</section>
+
+<section>
+<h2>4 · Exportar</h2>
+<div class="row"><button id="ex1" disabled>Spritesheet PNG + .txt</button><button id="ex2" disabled>Animación APNG (con transparencia)</button></div>
+<div class="info">El APNG conserva el fondo transparente que hayas dejado en el spritesheet. Se abre en navegadores, Telegram, Discord, Figma y más.</div>
+</section>
+
+<section>
+<h2>5 · Importar spritesheet editado</h2>
+<label class="btn s" style="display:block;color:var(--tx)">Elegir PNG y .txt juntos<input type="file" id="imp" accept="image/png,.png,.txt,text/plain" multiple></label>
+<div class="info">Selecciona los dos archivos a la vez. Luego exporta el APNG.</div>
+</section>
+<div id="msg"></div>
+
+<script src="state.js"></script>
+<script src="io.js"></script>
+<script src="analyze.js"></script>
+<script src="timeline.js"></script>
+<script src="preview.js"></script>
+<script src="sheet.js"></script>
+<script src="apng.js"></script>
+<script src="importer.js"></script>
+</body>
+</html>
