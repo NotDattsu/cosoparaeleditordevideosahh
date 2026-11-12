@@ -13,15 +13,16 @@
 <h2>1 · Video</h2>
 <label class="btn s" style="display:block;color:var(--tx)">Elegir video<input type="file" id="vf" accept="video/*"></label>
 <div class="info" id="vn">Ningún video cargado</div>
-<label>FPS en escenas quietas <b id="l1">2</b></label><input type="range" id="minF" min="1" max="6" step="0.5" value="2">
-<label>FPS en escenas con mucho movimiento <b id="l2">6</b></label><input type="range" id="maxF" min="2" max="12" step="1" value="6">
+<label>Cambio de frame obligatorio cada (segundos) en escenas quietas <b id="l1">3</b></label><input type="range" id="gap" min="0.5" max="10" step="0.5" value="3">
+<label>FPS máximo en escenas con mucho movimiento <b id="l2">6</b></label><input type="range" id="maxF" min="2" max="12" step="1" value="6">
 <label>Sensibilidad: movimiento que cuenta como alto <b id="l3">6</b></label><input type="range" id="sens" min="1" max="40" step="1" value="6">
+<label>Curva: más alto = más frames solo con movimiento fuerte <b id="l4">2</b></label><input type="range" id="curve" min="1" max="4" step="0.5" value="2">
 <label>Tamaño máximo del frame</label>
 <select id="size"><option value="256">256 px (liviano)</option><option value="512">512 px</option><option value="768">768 px</option><option value="1080" selected>1080 px (alta calidad)</option><option value="0">Original (sin reducir)</option></select>
 <div class="info">Más tamaño = más memoria. Si el celular se queda sin memoria, baja el tamaño o el FPS máximo. Un spritesheet muy grande (más de unos 16 millones de píxeles) puede fallar en el celular.</div>
 <div class="row"><button id="an" disabled>Analizar video</button><button class="s" id="re" disabled>Recalcular selección</button></div>
 <div class="bar" id="bar"><i id="bi"></i></div>
-<div class="info">Cambiar FPS mínimo o sensibilidad y tocar Recalcular reinicia la selección automática. Cambiar FPS máximo o tamaño requiere Analizar de nuevo.</div>
+<div class="info">Cambiar los segundos, la sensibilidad o la curva y tocar Recalcular reinicia la selección automática. Cambiar FPS máximo o tamaño requiere Analizar de nuevo.</div>
 </section>
 
 <section>

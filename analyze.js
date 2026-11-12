@@ -28,11 +28,11 @@ $('an').onclick=async()=>{
 };
 
 function autoSel(){
-  const mn=+$('minF').value,mxf=+$('maxF').value,sn=+$('sens').value;
+  const gp=+$('gap').value,mxf=+$('maxF').value,sn=+$('sens').value,cv=+$('curve').value,mn=1/gp;
   let last=-1e9,pk=0;
   S.forEach((s,i)=>{
     s.dur=null;pk=Math.max(pk,s.m);
-    const f=mn+(mxf-mn)*Math.min(1,pk/sn);
+    const f=mn+(mxf-mn)*Math.pow(Math.min(1,pk/sn),cv);
     if(i===0||s.t-last>=1/f-1e-6){s.keep=true;last=s.t;pk=0}else s.keep=false;
   });
 }
